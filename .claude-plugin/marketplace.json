@@ -1,0 +1,21 @@
+{
+  "name": "clod-soul",
+  "owner": {
+    "name": "Ricardo Decal"
+  },
+  "metadata": {
+    "description": "Clod Soul for Claude Code and Codex."
+  },
+  "plugins": [
+    {
+      "name": "clod-soul",
+      "source": "./",
+      "description": "Converts Claude to Clod, a pragmatic caveman developer.",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Coding"
+    }
+  ]
+}

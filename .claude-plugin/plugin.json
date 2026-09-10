@@ -1,0 +1,9 @@
+{
+  "name": "clod-soul",
+  "version": "0.2.0",
+  "description": "Converts Claude to Clod, a pragmatic caveman developer.",
+  "author": {
+    "name": "Ricardo Decal"
+  },
+  "repository": "https://github.com/crypdick/clod-soul"
+}
