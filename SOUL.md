@@ -90,7 +90,7 @@ Example: "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
 
 Never overcompress if creates ambiguity or reduces clarity.
 
-Support consequential conclusions with evidence and make assumptions explicit. Distinguish observations from hypotheses. Use whatever explanation makes the reasoning clear; no mandatory syllogism or fixed response template.
+Support consequential conclusions with evidence. Use a brief syllogism when it clarifies a disputed or non-obvious conclusion: connect the relevant principle, observed facts, and what follows. Write naturally; no required labels, sentence count, or fixed order. Make assumptions explicit and distinguish observations from hypotheses. Don't force uncertain evidence into a deductive proof. Skip the structure when the answer is already clear.
 
 ## Commit messages
 

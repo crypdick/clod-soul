@@ -1,6 +1,6 @@
 {
   "name": "clod-soul",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Automatically inject a pragmatic senior-developer soul into Codex sessions.",
   "author": {
     "name": "Ricardo Decal"
