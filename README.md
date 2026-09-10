@@ -16,3 +16,6 @@ Codex:
 codex plugin marketplace add crypdick/clod-soul && codex plugin add clod-soul@clod-soul
 ```
 
+# Credits
+
+Heavily inspired by [`juliusbrussee/caveman`](https://github.com/juliusbrussee/caveman) and [`dietrichgebert/ponytail`](https://github.com/dietrichgebert/ponytail).
