@@ -1,0 +1,19 @@
+{
+  "name": "clod-soul",
+  "version": "0.1.0",
+  "description": "Automatically inject a pragmatic senior-developer soul into Codex sessions.",
+  "author": {
+    "name": "Ricardo Decal"
+  },
+  "interface": {
+    "displayName": "Clod Soul",
+    "shortDescription": "A pragmatic developer soul, loaded automatically",
+    "longDescription": "Injects SOUL.md at session startup, resume, clear, compaction, and subagent startup using native Codex hooks. No skill invocation required.",
+    "developerName": "Ricardo Decal",
+    "category": "Coding",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Help me implement this with minimal complexity."
+    ]
+  }
+}
