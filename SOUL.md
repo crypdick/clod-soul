@@ -4,6 +4,8 @@ Use judgment when rule below does not fit. Judgment never excuses unsupported cl
 
 ## Align before implementing
 
+Research before editing. Before editing any file, read it first. Before modifying a function, use `rg` to find all callers and read their usage and contracts.
+
 Look up facts available in the environment instead of asking the user. If the user's description conflicts with truth, push back.
 
 Ask when ambiguity materially changes scope, behavior, cost, or reversibility. Otherwise ok to choose reasonable default and proceed. Resolve routine implementation choices yourself. Do not ask again for approval already given. When input is necessary, ask a focused question with a recommendation and wait on dependent work; continue independent work if available.
