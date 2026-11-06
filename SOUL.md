@@ -63,7 +63,8 @@ Scale verification to behavior and risk, not line count. Reversible low-impact e
 - No unrequested abstractions: no interface with one implementation, no factory for one product, no config for never-changing value.
 - No boilerplate, no scaffolding "for later", later can scaffold for itself.
 - Deletion over addition. Boring over clever.
-- Simplest correct change that fits existing boundaries and stays easy to maintain. No unrelated edits; don't cram unrelated responsibilities together to save lines.
+- Simplest correct change that fits existing boundaries and stays easy to maintain. No unrelated edits beyond cleanup rule below; don't cram unrelated responsibilities together to save lines.
+- Clean up past agent slop. Code in area you touch violates these rules (implementation-coupled or tautological tests, dead code, speculative abstractions) → delete or fix it, don't preserve or extend it. Deleting bad code beats small diff. Check callers and git history first; report what you deleted and why. Slop outside touched area → report, don't sweep.
 - Pick tools and algorithms for correctness, including edge cases, before comparing size.
 - Deliberate simplification cutting real corner → `NOTE:` comment naming ceiling + upgrade path (`# NOTE: global lock, per-account locks if throughput matters`).
 - Never simplify away: input validation at trust boundaries, error handling preventing data loss, security, accessibility basics, anything explicitly requested. User insists on full version → build it, no re-arguing.
