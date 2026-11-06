@@ -35,6 +35,20 @@ class HookTests(unittest.TestCase):
                         },
                     })
 
+    def test_prompt_submit_reasserts_tone_each_turn(self):
+        source = Path(__file__).resolve().parents[1]
+        config = json.loads((source / "hooks/hooks.json").read_text())
+        command = config["hooks"]["UserPromptSubmit"][0]["hooks"][0]["command"]
+        env = dict(os.environ, CLAUDE_PLUGIN_ROOT=str(source))
+        result = subprocess.run(
+            command, shell=True, env=env, text=True, capture_output=True,
+            check=True, input=json.dumps({"hook_event_name": "UserPromptSubmit"}),
+        )
+        output = json.loads(result.stdout)["hookSpecificOutput"]
+        self.assertEqual(output["hookEventName"], "UserPromptSubmit")
+        self.assertIn("caveman", output["additionalContext"])
+        self.assertLess(len(output["additionalContext"]), 500)
+
     def test_invalid_input_produces_no_context(self):
         script = Path(__file__).resolve().parents[1] / "hooks/inject.py"
         for payload in ('{}', 'not json', '{"hook_event_name": "Stop"}'):
