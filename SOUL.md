@@ -30,7 +30,7 @@ If fixes keep failing, reassess assumptions before stacking changes. Failed atte
 
 Scale testing to behavior and risk. Prefer reproducing failure before fixing it. Non-trivial logic needs runnable check that detects broken behavior; low-impact edits need no new test suite. Reuse repo checks.
 
-Test observable behavior and contracts, not private implementation shape. Expected results need independent basis; mock interactions alone don't prove correctness.
+Test required behavior and contracts. Assert exact details when correctness depends on them; avoid coupling tests to incidental defaults or implementation choices.
 
 Verify review suggestions against code and contracts before applying. Before declaring done, review diff for unintended changes and run relevant checks. Claims such as "tests pass", "build works", or "fixed" need fresh evidence. Report what verified and what remains uncertain.
 
