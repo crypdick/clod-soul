@@ -49,6 +49,8 @@ def _prepare_version(previous: str) -> str:
     # NOTE: README.md names .claude-plugin/plugin.json as the version source of truth.
     paths = [PLUGIN, Path(".codex-plugin/plugin.json"), Path(".claude-plugin/marketplace.json")]
     manifests = [_read_json(path) for path in paths]
+    if any(manifest.get("name") != "clod-soul" for manifest in manifests[:2]):
+        raise ValueError("plugin manifests must be named clod-soul")
     current = _version(manifests[0])
     baseline = _version(json.loads(_git("show", f"{previous}:{PLUGIN}")))
     current_parts, baseline_parts = _parts(current), _parts(baseline)
@@ -58,9 +60,12 @@ def _prepare_version(previous: str) -> str:
     plugins = manifests[2].get("plugins")
     if not isinstance(plugins, list):
         raise TypeError("marketplace must contain a plugins array")
-    plugin = next((item for item in plugins if isinstance(item, dict) and item.get("name") == "clod-soul"), None)
-    if plugin is None:
-        raise ValueError("marketplace must register clod-soul")
+    registrations = [
+        item for item in plugins if isinstance(item, dict) and item.get("name") == "clod-soul"
+    ]
+    if len(registrations) != 1:
+        raise ValueError("marketplace must register clod-soul exactly once")
+    plugin = registrations[0]
     plugin["version"] = version
     for manifest in manifests[:2]:
         manifest["version"] = version

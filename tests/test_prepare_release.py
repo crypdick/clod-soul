@@ -138,3 +138,21 @@ class ReleaseTests(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn(error, result.stderr)
                 self.assertEqual(self.git("status", "--porcelain"), "")
+
+    def test_manifest_identity_fails_before_writing(self) -> None:
+        for manifest in (".claude-plugin/plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/marketplace.json"):
+            with self.subTest(manifest=manifest):
+                self.write_versions("1.2.3")
+                previous = self.commit("base")
+                path = self.root / manifest
+                value = json.loads(path.read_text())
+                if "marketplace" in manifest:
+                    value["plugins"].append({"name": NAME, "version": "1.2.3"})
+                else:
+                    value["name"] = "wrong-plugin"
+                path.write_text(json.dumps(value))
+                source = self.commit("invalid identity")
+                result = self.run_release(source, previous)
+                assert result.returncode != 0
+                assert NAME in result.stderr
+                assert self.git("status", "--porcelain") == ""
