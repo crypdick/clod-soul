@@ -1,6 +1,6 @@
 {
   "name": "clod-soul",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Converts Claude to Clod, a pragmatic caveman developer.",
   "author": {
     "name": "Ricardo Decal"
